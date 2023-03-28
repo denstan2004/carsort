@@ -15,14 +15,18 @@ public class Main {
         Car porshe =new Car(date);
         Car lada =new Car(date2);
         Car BWM =new Car(date3);
-       ArrayList<Car> cars=new ArrayList<>();
+        ArrayList<Car> cars=new ArrayList<>();
+        cars.add(porshe);
+        cars.add(lada);
+        cars.add(BWM);
 
         Car newestCar = cars.stream()
                 .max(Comparator.comparing(car -> car.getCreateDate()))
                 .orElse(null);
-
+        System.out.println(newestCar.toString());
 
     }
+
 
 }
 
@@ -31,7 +35,14 @@ public class Main {
 
 class Car
 {
-   private LocalDate createDate;
+    @Override
+    public String toString() {
+        return "Car{" +
+                "createDate=" + createDate +
+                '}';
+    }
+
+    private LocalDate createDate;
 
     public Car(LocalDate createDate) {
         this.createDate = createDate;
@@ -45,6 +56,3 @@ class Car
         this.createDate = createDate;
     }
 }
-
-
-
